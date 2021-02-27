@@ -57,7 +57,7 @@ clean:
 ## run: run main.go
 run: build
 	@echo -e "${GRAY}>> 👟\t${MAGENTA}Running...${RESET_COLOR}"
-	go run -race -trimpath main.go
+	go run -race -trimpath ./...
 .PHONY: run
 
 ## mod-download: download modules to local cache

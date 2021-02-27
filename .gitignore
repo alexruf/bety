@@ -93,3 +93,4 @@ vendor/
 
 # Bety
 bety
+db.sqlite
