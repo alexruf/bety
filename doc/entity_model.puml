@@ -1,0 +1,47 @@
+@startuml
+'https://plantuml.com/object-diagram
+
+object "Game" as game
+game : id = {UUID}
+game : type = "FORMULA-ONE"
+game : data = '{"data": {...}}'
+
+object "BettingRound" as bettinground
+bettinground : id = {UUID}
+bettinground : game_id = {UUID}
+bettinground : start_time = "2020-02-28"
+bettinground : end_time = "2020-03-01"
+bettinground : data = '{"data": {...}}'
+
+object "Bet" as bet
+bet : id = {UUID}
+bet : gameround_id = {UUID}
+bet : game_id = {UUID}
+bet : player_id = {UUID}
+bet : data = '{"data": {...}}'
+
+object "Player" as player
+player : id = {UUID}
+player : game_id = {UUID}
+player : user_id = {UUID}
+player : role = "owner|manager|player"
+player : stats = '{"stats": {...}}'
+
+object "User" as user
+user : id = {UUID}
+user : name = "John Doe"
+user : login = "john.doe"
+user : password = "Adawei4V"
+user : email = "john.doe@example.com"
+user : role = "admin|user"
+
+game o-- player :"1:n"
+game o-- bettinground : "1:n"
+game o.. bet : "1:n"
+
+bettinground o-- bet : "1:n"
+
+player o-- user : "n:1"
+player o.. bet : "1:n"
+
+@enduml
